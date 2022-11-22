@@ -16,13 +16,17 @@ def numbers(num1, num2):
 ## takes in two points
 ## finds the distance between the points
 
+# tests for a correct division by numbers
 def test_numbers():
     assert numbers(10, 2) == 5
 
-
+#tests for a failed division by numbers
 def test_numbers_fail():
     assert numbers(10, 2) == 6
 
+#should throw a zero division error
+def test_numbers_zero():
+    assert numbers(1,0) == 0
 def dist(x1, y1, x2, y2):
     dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
     dist = math.sqrt(dist)
