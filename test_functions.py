@@ -26,7 +26,8 @@ def test_numbers_fail():
 
 #should throw a zero division error
 def test_numbers_zero():
-    assert numbers(1,0) == 0
+    with pytest.raises(ZeroDivisionError):
+        numbers(1,0)
 def dist(x1, y1, x2, y2):
     dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
     dist = math.sqrt(dist)
