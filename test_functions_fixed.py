@@ -1,6 +1,6 @@
 import pytest
 import math
-#this py file contains the pytest functions and the uncorrected original functions
+#this py file contains the pytest functions and the corrected original functions
 
 
 ## opens a file in read mode
@@ -13,6 +13,11 @@ def openFile(filename):
 ## takes two numbers and returns
 ## the result of a division
 def numbers(num1, num2):
+    try:
+        num1 = int(num1)
+        num2 = int(num2)
+    except:
+        print("Cannot divide by zero")
     return num1 / num2
 
 ## takes in two points
