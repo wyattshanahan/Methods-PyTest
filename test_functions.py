@@ -54,19 +54,43 @@ def test_dist_4():
 #testing dist with only floats
 def test_dist_4():
     assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
-#testing dist with a number stored as a string, this test should fail
+#testing dist with a number stored as a string, this test should fail with a typeError
 def test_dist_5():
     assert (dist("1",2,3,4)) == 2.8284271247461903
+#testing dist with an input of variables storing integers
+def test_dist_6():
+    x1,x2,y1,y2 = 1,2,3,4
+    assert (dist(x1,x2,y1,y2)) == 2.8284271247461903
 ## takes in a string -- reverses it
 ## then compares the two
 def isPalindrome(temp):
     test = temp[::-1]
-
     if(test == temp):
         return True
-
     else:
         return False
+
+#tests a palindrome in all lowercase characters
+def test_palin_1():
+    assert (isPalindrome("racecar")) == True
+#tests a palindrome with one capital letter, should fail without converting letters to the same case
+def test_palin_2():
+    assert(isPalindrome("Racecar")) == True
+#tests a palindrome in all uppercase letters
+def test_palin_3():
+    assert(isPalindrome("RACECAR")) == True
+#tests a multiword string that is a palindrome
+def test_palin_4():
+    assert(isPalindrome("racecar racecar")) == True
+#tests an integer that is a palindrome, should fail as it is not iterable
+def test_palin_5():
+    assert(isPalindrome(616)) == True
+#tests a float that is a palindrome, should fail as it is not iterable
+def test_palin_6():
+    assert (isPalindrome(616.616)) == True
+#tests an integer that is converted to a string, should be successful
+def test_palin_7():
+    assert (isPalindrome(str(616.616))) == True
 
 ## has input to receive two numbers
 ## divides the two, then outputs the result
