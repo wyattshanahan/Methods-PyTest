@@ -33,12 +33,30 @@ def test_numbers_zero():
 # tests the function using an integer and a float, should return an integer
 def test_numbers_1flt():
     assert numbers(5,5.0) == 1.0
+
 def dist(x1, y1, x2, y2):
     dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
     dist = math.sqrt(dist)
-
     return dist
 
+#testing dist, should pass and return a long decimal using only integers
+def test_dist_1():
+    assert dist(1,2,3,4) == 2.8284271247461903
+#testing dist to ensure it can return a distance of zero
+def test_dist_2():
+    assert dist(4,2,4,2) == 0.0
+#testing dist, should return a float with a decimal of zero
+def test_dist_3():
+    assert (dist(1, 4, 2, 4)) == 1.0
+#testing dist to ensure it can handle a mix of floats and integers
+def test_dist_4():
+    assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
+#testing dist with only floats
+def test_dist_4():
+    assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
+#testing dist with a number stored as a string, this test should fail
+def test_dist_5():
+    assert (dist("1",2,3,4)) == 2.8284271247461903
 ## takes in a string -- reverses it
 ## then compares the two
 def isPalindrome(temp):
