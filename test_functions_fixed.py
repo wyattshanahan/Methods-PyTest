@@ -77,12 +77,6 @@ def sq(num):
         print(x)
         return math.sqrt(num)
 
-
-sq('4')
-
-def test_sq_is_float():
-    assert type(sq(4)) == float
-
 ## grabs user's name
 ## greets them by their entire name
 ## names should be strings

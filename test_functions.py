@@ -134,7 +134,18 @@ def greetUser(first, middle, last):
     print("Welcome to the program", first, middle, last)
     print("Glad to have you!")
 
+def test_greetUser(capsys):
+    greetUser("John", "Robert", "Doe")
+
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "Hello!\nWelcome to the program John Robert Doe\nGlad to have you!\n"
+
 ## takes in a Python list
 ## attempts to display the item at the index provided
 def displayItem(numbers, index):
     print("Your item at", index, "index is", numbers[index])
+
+def test_displayItem(capsys):
+    displayItem([0, 1, 2, 3], 3)
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "Your item at 3 index is 3\n"
