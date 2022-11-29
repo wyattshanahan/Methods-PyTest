@@ -34,8 +34,6 @@ def test_numbers_zero():
 def test_numbers_1flt():
     assert numbers(5,5.0) == 1.0
 
-    with pytest.raises(ZeroDivisionError):
-        numbers(1,0)
 def dist(x1, y1, x2, y2):
     dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
     dist = math.sqrt(dist)
@@ -109,16 +107,12 @@ def sq(num):
 def test_sq_negative():
     with pytest.raises(ValueError):
         sq(-1)
-
 def test_sq():
     assert sq(4) == 2
-
 def test_sq_is_float():
     assert sq(4) == 2
-
 def test_sq_string():
     assert sq("4") == 2
-
 def test_sq_str2():
     assert sq(float("4")) == 2
 ## grabs user's name
@@ -139,8 +133,14 @@ def test_greetUser(capsys):
 ## attempts to display the item at the index provided
 def displayItem(numbers, index):
     print("Your item at", index, "index is", numbers[index])
-
+#tests for correct output
 def test_displayItem(capsys):
     displayItem([0, 1, 2, 3], 3)
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "Your item at 3 index is 3\n"
+# should raise an index error, because tried to get an index that is out of reach of the list
+def test_displayItem_indexErr():
+    assert displayItem([0, 1, 2], 5) == "index error"
+# should raise a type error, because the index variable must be an integer
+def test_displayItem_PLACEHOLDER():
+    assert displayItem([0, 1, 2, 3], "five") == "type error"
