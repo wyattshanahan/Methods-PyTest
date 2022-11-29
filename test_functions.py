@@ -127,12 +127,18 @@ def greetUser(first, middle, last):
     print("Hello!")
     print("Welcome to the program", first, middle, last)
     print("Glad to have you!")
-
+# tests for correct output
 def test_greetUser(capsys):
     greetUser("John", "Robert", "Doe")
 
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "Hello!\nWelcome to the program John Robert Doe\nGlad to have you!\n"
+# this test should fail
+def test_greetUser_failure():
+    greetUser("John", "Robert", "Doe")
+
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "this test should fail"
 
 ## takes in a Python list
 ## attempts to display the item at the index provided
