@@ -118,8 +118,23 @@ def test_sq_negative():
 def test_sq():
     assert sq(4) == 2
 
+def test_sq_is_float():
+    assert sq(4) == 2
+
+def test_sq_string():
+    assert sq("4") == 2
+
+def test_sq_str2():
+    assert sq(float("4")) == 2
 ## grabs user's name
 ## greets them by their entire name
 ## names should be strings
 def greetUser(first, middle, last):
-        return
+    print("Hello!")
+    print("Welcome to the program", first, middle, last)
+    print("Glad to have you!")
+
+## takes in a Python list
+## attempts to display the item at the index provided
+def displayItem(numbers, index):
+    print("Your item at", index, "index is", numbers[index])
