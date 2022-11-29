@@ -118,10 +118,8 @@ def test_sq_negative():
 def test_sq():
     assert sq(4) == 2
 
-def test_sq_is_float():
-    assert type(sq(4)) == float
-
 ## grabs user's name
 ## greets them by their entire name
 ## names should be strings
 def greetUser(first, middle, last):
+        return

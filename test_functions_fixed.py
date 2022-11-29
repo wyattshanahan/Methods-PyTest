@@ -64,10 +64,24 @@ def divide():
 
 ## returns the squareroot of a particular number
 def sq(num):
+
     try:
+        x = math.sqrt(num)
+        print(x)
         return math.sqrt(num)
-    except:
+    except ValueError:
         print("Cannot have a square root of a negative number")
+    except TypeError:
+        num = float(num)
+        x = math.sqrt(num)
+        print(x)
+        return math.sqrt(num)
+
+
+sq('4')
+
+def test_sq_is_float():
+    assert type(sq(4)) == float
 
 ## grabs user's name
 ## greets them by their entire name
