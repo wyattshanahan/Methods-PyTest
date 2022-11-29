@@ -69,6 +69,9 @@ def test_sq():
 def test_sq_is_float():
     assert type(sq(4)) == float
 
+def test_sq_fail():
+    assert sq(4) == 1
+
 ## grabs user's name
 ## greets them by their entire name
 ## names should be strings
@@ -83,3 +86,4 @@ def displayItem(numbers, index):
     print("Your item at", index, "index is", numbers[index])
 
 # comment
+
