@@ -50,17 +50,16 @@ def test_dist_3():
     assert (dist(1, 4, 2, 4)) == 1.0
 #testing dist to ensure it can handle a mix of floats and integers
 def test_dist_4():
-    assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
+    assert (dist(1,2.0,3,4.0)) == 2.8284271247461903
 #testing dist with only floats
-def test_dist_4():
-    assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
-#testing dist with a number stored as a string, this test should fail with a typeError
 def test_dist_5():
-    assert (dist("1",2,3,4)) == 2.8284271247461903
-#testing dist with an input of variables storing integers
+    assert (dist(1.0,2.0,3.0,4.0)) == 2.8284271247461903
+#testing dist with a number stored as a string, this test should attempt conversion due to a typeError
 def test_dist_6():
-    x1,x2,y1,y2 = 1,2,3,4
-    assert (dist(x1,x2,y1,y2)) == 2.8284271247461903
+    assert (dist("1",2,3,4)) == 2.8284271247461903
+#testing dist with an input including letters stored in a string
+def test_dist_7():
+    assert (dist("one",2,3,4)) == "Invalid input."
 ## takes in a string -- reverses it
 ## then compares the two
 def isPalindrome(temp):
