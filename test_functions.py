@@ -39,7 +39,6 @@ def test_numbers_1flt():
 def dist(x1, y1, x2, y2):
     dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
     dist = math.sqrt(dist)
-
     return dist
 
 #testing dist, should pass and return a long decimal using only integers
@@ -74,7 +73,6 @@ def isPalindrome(temp):
 
     else:
         return False
-
 #tests a palindrome in all lowercase characters
 def test_palin_1():
     assert (isPalindrome("racecar")) == True
@@ -93,9 +91,6 @@ def test_palin_5():
 #tests a float that is a palindrome, should fail as it is not iterable
 def test_palin_6():
     assert (isPalindrome(616.616)) == True
-#tests an integer that is converted to a string, should be successful
-def test_palin_7():
-    assert (isPalindrome(str(616.616))) == True
 
 ## has input to receive two numbers
 ## divides the two, then outputs the result

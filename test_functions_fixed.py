@@ -43,15 +43,33 @@ def dist(x1, y1, x2, y2):
 
 ## takes in a string -- reverses it
 ## then compares the two
+# additions: converts input to string and all upper to avoid case issues
 def isPalindrome(temp):
+    temp = str(temp)
+    temp = temp.upper()
     test = temp[::-1]
-
     if(test == temp):
         return True
-
     else:
         return False
-
+#tests a palindrome in all lowercase characters
+def test_palin_1():
+    assert (isPalindrome("racecar")) == True
+#tests a palindrome with one capital letter, should fail without converting letters to the same case
+def test_palin_2():
+    assert(isPalindrome("Racecar")) == True
+#tests a palindrome in all uppercase letters
+def test_palin_3():
+    assert(isPalindrome("RACECAR")) == True
+#tests a multiword string that is a palindrome
+def test_palin_4():
+    assert(isPalindrome("racecar racecar")) == True
+#tests an integer that is a palindrome, should fail as it is not iterable
+def test_palin_5():
+    assert(isPalindrome(616)) == True
+#tests a float that is a palindrome, should fail as it is not iterable
+def test_palin_6():
+    assert (isPalindrome(616.616)) == True
 ## has input to receive two numbers
 ## divides the two, then outputs the result
 def divide():
