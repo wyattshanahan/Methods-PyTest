@@ -3,9 +3,22 @@ import math
 from functions import *
 #this py file contains the pytest functions and the uncorrected original functions
 
-# TESTS FOR OPENFILE
 
-# TESTS FOR NUMBERS
+## opens a file in read mode
+## filename received as a parameter
+def openFile(filename):
+    infile = open(filename, "r")
+
+    print("File opened.")
+
+## takes two numbers and returns
+## the result of a division
+def numbers(num1, num2):
+    return num1 / num2
+
+## takes in two points
+## finds the distance between the points
+
 # tests for a correct division by numbers
 def test_numbers():
     assert numbers(10, 2) == 5
@@ -23,7 +36,11 @@ def test_numbers_zero():
 def test_numbers_1flt():
     assert numbers(5,5.0) == 1.0
 
-# TESTS FOR DIST
+def dist(x1, y1, x2, y2):
+    dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
+    dist = math.sqrt(dist)
+    return dist
+
 #testing dist, should pass and return a long decimal using only integers
 def test_dist_1():
     assert dist(1,2,3,4) == 2.8284271247461903
@@ -45,9 +62,16 @@ def test_dist_6():
 #testing dist with an input including letters stored in a string
 def test_dist_7():
     assert (dist("one",2,3,4)) == "Invalid input."
+## takes in a string -- reverses it
+## then compares the two
+def isPalindrome(temp):
+    test = temp[::-1]
 
-# TESTS FOR ISPALINDROME
+    if(test == temp):
+        return True
 
+    else:
+        return False
 #tests a palindrome in all lowercase characters
 def test_palin_1():
     assert (isPalindrome("racecar")) == True
@@ -69,11 +93,13 @@ def test_palin_6():
 
 ## has input to receive two numbers
 ## divides the two, then outputs the result
+def divide():
+    num1 = int(input("Enter a number: "))
+    num2 = int(input("Enter another number: "))
 
-# TESTS FOR DIVIDE
+    div = num1 / num2
 
-
-# TESTS FOR SQ
+    print("Your numbers divided is:", div)
 
 ## returns the squareroot of a particular number
 
@@ -98,6 +124,12 @@ def test_greetUser(capsys):
 
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "Hello!\nWelcome to the program John Robert Doe\nGlad to have you!\n"
+# this test should fail
+def test_greetUser_failure():
+    greetUser("John", "Robert", "Doe")
+
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "this test should fail"
 
 ## takes in a Python list
 ## attempts to display the item at the index provided
