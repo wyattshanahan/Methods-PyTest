@@ -37,7 +37,6 @@ def test_numbers_1flt():
 def dist(x1, y1, x2, y2):
     dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
     dist = math.sqrt(dist)
-
     return dist
 
 #testing dist, should pass and return a long decimal using only integers
@@ -51,17 +50,16 @@ def test_dist_3():
     assert (dist(1, 4, 2, 4)) == 1.0
 #testing dist to ensure it can handle a mix of floats and integers
 def test_dist_4():
-    assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
+    assert (dist(1,2.0,3,4.0)) == 2.8284271247461903
 #testing dist with only floats
-def test_dist_4():
-    assert (dist(1.,2.0,3.0,4.)) == 2.8284271247461903
-#testing dist with a number stored as a string, this test should fail with a typeError
 def test_dist_5():
-    assert (dist("1",2,3,4)) == 2.8284271247461903
-#testing dist with an input of variables storing integers
+    assert (dist(1.0,2.0,3.0,4.0)) == 2.8284271247461903
+#testing dist with a number stored as a string, this test should attempt conversion due to a typeError
 def test_dist_6():
-    x1,x2,y1,y2 = 1,2,3,4
-    assert (dist(x1,x2,y1,y2)) == 2.8284271247461903
+    assert (dist("1",2,3,4)) == 2.8284271247461903
+#testing dist with an input including letters stored in a string
+def test_dist_7():
+    assert (dist("one",2,3,4)) == "Invalid input."
 ## takes in a string -- reverses it
 ## then compares the two
 def isPalindrome(temp):
@@ -72,7 +70,6 @@ def isPalindrome(temp):
 
     else:
         return False
-
 #tests a palindrome in all lowercase characters
 def test_palin_1():
     assert (isPalindrome("racecar")) == True
@@ -91,9 +88,6 @@ def test_palin_5():
 #tests a float that is a palindrome, should fail as it is not iterable
 def test_palin_6():
     assert (isPalindrome(616.616)) == True
-#tests an integer that is converted to a string, should be successful
-def test_palin_7():
-    assert (isPalindrome(str(616.616))) == True
 
 ## has input to receive two numbers
 ## divides the two, then outputs the result

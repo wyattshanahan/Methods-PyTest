@@ -36,22 +36,73 @@ def test_numbers_zero():
     with pytest.raises(ZeroDivisionError):
         numbers(1,0)
 def dist(x1, y1, x2, y2):
-    dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
-    dist = math.sqrt(dist)
-
-    return dist
-
+    dist = 0
+    try:
+        dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
+        dist = math.sqrt(dist)
+        return dist
+    except TypeError:
+        try:
+            x1 = float(x1)
+            x2 = float(x2)
+            y1 = float(y1)
+            y2 = float(y2)
+        except ValueError:
+            return ("Invalid input.")
+            #return False
+        dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
+        dist = math.sqrt(dist)
+        return dist
+#testing dist, should pass and return a long decimal using only integers
+def test_dist_1():
+    assert dist(1,2,3,4) == 2.8284271247461903
+#testing dist to ensure it can return a distance of zero
+def test_dist_2():
+    assert dist(4,2,4,2) == 0.0
+#testing dist, should return a float with a decimal of zero
+def test_dist_3():
+    assert (dist(1, 4, 2, 4)) == 1.0
+#testing dist to ensure it can handle a mix of floats and integers
+def test_dist_4():
+    assert (dist(1,2.0,3,4.0)) == 2.8284271247461903
+#testing dist with only floats
+def test_dist_5():
+    assert (dist(1.0,2.0,3.0,4.0)) == 2.8284271247461903
+#testing dist with a number stored as a string, this test should attempt conversion due to a typeError
+def test_dist_6():
+    assert (dist("1",2,3,4)) == 2.8284271247461903
+#testing dist with an input including letters stored in a string
+def test_dist_7():
+    assert (dist("one",2,3,4)) == "Invalid input."
 ## takes in a string -- reverses it
 ## then compares the two
+# additions: converts input to string and all upper to avoid case issues
 def isPalindrome(temp):
+    temp = str(temp)
+    temp = temp.upper()
     test = temp[::-1]
-
     if(test == temp):
         return True
-
     else:
         return False
-
+#tests a palindrome in all lowercase characters
+def test_palin_1():
+    assert (isPalindrome("racecar")) == True
+#tests a palindrome with one capital letter, should fail without converting letters to the same case
+def test_palin_2():
+    assert(isPalindrome("Racecar")) == True
+#tests a palindrome in all uppercase letters
+def test_palin_3():
+    assert(isPalindrome("RACECAR")) == True
+#tests a multiword string that is a palindrome
+def test_palin_4():
+    assert(isPalindrome("racecar racecar")) == True
+#tests an integer that is a palindrome, should fail as it is not iterable
+def test_palin_5():
+    assert(isPalindrome(616)) == True
+#tests a float that is a palindrome, should fail as it is not iterable
+def test_palin_6():
+    assert (isPalindrome(616.616)) == True
 ## has input to receive two numbers
 ## divides the two, then outputs the result
 def divide():
