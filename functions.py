@@ -5,7 +5,7 @@ import math
 def openFile(filename):
     infile = open(filename, "r")
 
-    print("File opened.")
+    print("File opened.") 
 
 ## takes two numbers and returns
 ## the result of a division
