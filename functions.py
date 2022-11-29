@@ -10,27 +10,44 @@ def openFile(filename):
 ## takes two numbers and returns
 ## the result of a division
 def numbers(num1, num2):
+    try:
+        num1 = int(num1)
+        num2 = int(num2)
+    except:
+        print("Cannot divide by zero")
     return num1 / num2
 
 ## takes in two points
 ## finds the distance between the points
 def dist(x1, y1, x2, y2):
-    dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
-    dist = math.sqrt(dist)
-
-    return dist
+    dist = 0
+    try:
+        dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
+        dist = math.sqrt(dist)
+        return dist
+    except TypeError:
+        try:
+            x1 = float(x1)
+            x2 = float(x2)
+            y1 = float(y1)
+            y2 = float(y2)
+        except ValueError:
+            return ("Invalid input.")
+            #return False
+        dist = (x2 - x1) ** 2 + (y2 - y1) ** 2
+        dist = math.sqrt(dist)
+        return dist
 
 ## takes in a string -- reverses it
 ## then compares the two
 def isPalindrome(temp):
+    temp = str(temp)
+    temp = temp.upper()
     test = temp[::-1]
-
     if(test == temp):
         return True
-
     else:
         return False
-
 ## has input to receive two numbers
 ## divides the two, then outputs the result
 def divide():
@@ -43,7 +60,18 @@ def divide():
 
 ## returns the squareroot of a particular number
 def sq(num):
-    return math.sqrt(num)
+
+    try:
+        x = math.sqrt(num)
+        print(x)
+        return math.sqrt(num)
+    except ValueError:
+        print("Cannot have a square root of a negative number")
+    except TypeError:
+        num = float(num)
+        x = math.sqrt(num)
+        print(x)
+        return math.sqrt(num)
 
 ## grabs user's name
 ## greets them by their entire name
