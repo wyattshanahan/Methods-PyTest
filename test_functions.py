@@ -83,17 +83,36 @@ def test_palin_6():
 
 # TESTS FOR DIVIDE
 
+# testing divide using integers
 def geninputs():
     inputs = ['6','3']
-
     for item in inputs:
         yield item
-
 GEN = geninputs()
-
 def test_divide(monkeypatch):
     monkeypatch.setattr('builtins.input', lambda _: next(GEN))
 
+    assert divide() == "Your numbers divided is: 2.0\n"
+
+
+# runs the divide function with float values rather than ints
+def geninputs_2():
+    inputs = ['6.2','3.1']
+    for item in inputs:
+        yield item
+GEN2 = geninputs_2()
+def test_divide_2(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN2))
+    assert divide() == "Your numbers divided is: 2.0\n"
+
+# testing with strings composed of ASCII characters, intentionally fails
+def geninputs_3():
+    inputs = ['six','three']
+    for item in inputs:
+        yield item
+GEN3 = geninputs_3()
+def test_divide_3(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN3))
     assert divide() == "Your numbers divided is: 2.0\n"
 
 # TESTS FOR SQ
@@ -125,8 +144,6 @@ def test_greetUser_failure(capsys):
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "this test should fail"
 
-## takes in a Python list
-## attempts to display the item at the index provided
 
 # TESTS FOR DISPLAYITEM
 

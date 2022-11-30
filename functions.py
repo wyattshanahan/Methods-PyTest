@@ -64,13 +64,29 @@ def isPalindrome(temp):
 ## has input to receive two numbers
 ## divides the two, then outputs the result
 def divide():
-    num1 = int(input("Enter a number: "))
-    num2 = int(input("Enter another number: "))
-
-    div = num1 / num2
-    output = "Your numbers divided is: " + str(div) + "\n"
-    print(output)
-    return output
+    num1 = (input("Enter a number: "))
+    num2 = (input("Enter another number: "))
+    try:
+        num1 = int(num1)
+        num2 = int(num2)
+        div = num1 / num2
+        output = "Your numbers divided is: " + str(div) + "\n"
+        print(output)
+        return output
+    except ValueError:
+        try:
+            num1 = float(num1)
+            num2 = float(num2)
+            div = num1 / num2
+            output = "Your numbers divided is: " + str(div) + "\n"
+            print(output)
+            return output
+        except ValueError:
+            print("Invalid data type.")
+            return "Invalid data type."
+    except:
+        print("Something went wrong, please try again.")
+        return "Something went wrong, please try again."
 
 ## returns the squareroot of a particular number
 def sq(num):
