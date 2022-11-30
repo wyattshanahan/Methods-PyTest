@@ -25,6 +25,7 @@ def test_numbers_1flt():
 def test_numbers_str():
     assert numbers(5,"5") == 1
 
+# TESTS FOR DIST
 #testing dist, should pass and return a long decimal using only integers
 def test_dist_1():
     assert dist(1,2,3,4) == 2.8284271247461903
@@ -46,10 +47,8 @@ def test_dist_6():
 #testing dist with an input including letters stored in a string
 def test_dist_7():
     assert (dist("one",2,3,4)) == "Invalid input."
-## takes in a string -- reverses it
-## then compares the two
 
-#tests a palindrome in all lowercase characters
+# TESTS FOR ISPALINDROME
 def test_palin_1():
     assert (isPalindrome("racecar")) == True
 #tests a palindrome with one capital letter, should fail without converting letters to the same case
@@ -68,26 +67,25 @@ def test_palin_5():
 def test_palin_6():
     assert (isPalindrome(616.616)) == True
 
-## has input to receive two numbers
-## divides the two, then outputs the result
+# TESTS FOR DIVIDE
 
-## returns the squareroot of a particular number
+# TESTS FOR SQ
 
+# testing for negative values, should fail
 def test_sq_negative():
     assert sq(-1) == None
-    #with pytest.raises(ValueError):
-     #   sq(-1)
+
+#testing for integer values, should pass
 def test_sq():
     assert sq(4) == 2
+
+#testing for float values, should pass
 def test_sq_is_float():
-    assert sq(4) == 2
+    assert sq(4.0) == 2.0
+
+#testing for string values, should pass
 def test_sq_string():
     assert sq("4") == 2
-def test_sq_str2():
-    assert sq(float("4")) == 2
-## grabs user's name
-## greets them by their entire name
-## names should be strings
 
 # TESTS FOR GREETUSER
 def test_greetUser(capsys):
