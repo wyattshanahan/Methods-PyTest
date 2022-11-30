@@ -84,7 +84,7 @@ def test_palin_6():
 # TESTS FOR DIVIDE
 
 def geninputs():
-    inputs = ["6","3"]
+    inputs = ['6','3']
 
     for item in inputs:
         yield item
@@ -92,9 +92,9 @@ def geninputs():
 GEN = geninputs()
 
 def test_divide(monkeypatch):
-    monkeypatch.setattr(‘builtins.input’, lambda _: next(GEN))
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN))
 
-    assert divide() == 2.0
+    assert divide() == "Your numbers divided is: 2.0\n"
 
 # TESTS FOR SQ
 
