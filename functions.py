@@ -100,4 +100,4 @@ def displayItem(numbers, index):
     except IndexError:
         print("The index argument is out of reach of the list.")
     except TypeError:
-        print("The index argument must be an integer.")
+        print("The index argument must be an integer.") 
