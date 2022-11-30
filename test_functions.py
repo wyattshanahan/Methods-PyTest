@@ -82,20 +82,18 @@ def test_palin_6():
     assert (isPalindrome(616.616)) == True
 
 # TESTS FOR DIVIDE
-"""
-def geninputs():
-    inputs = ["6","3"]
+#def test_divide_inputTest(monkeypatch):
+    #monkeypatch.setattr("builtins.input", lambda_:"8")
 
+def geninputs1():
+    inputs = ["6","3"]
     for item in inputs:
         yield item
-
-GEN = geninputs()
-
+GEN = geninputs1()
 def test_divide(monkeypatch):
-    monkeypatch.setattr(‘builtins.input’, lambda _: next(GEN))
-
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN))
     assert divide() == 2.0
-"""
+
 # TESTS FOR SQ
 
 # testing for negative values, should fail
@@ -124,9 +122,6 @@ def test_greetUser_failure(capsys):
     greetUser("John", "Robert", "Doe")
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "this test should fail"
-
-## takes in a Python list
-## attempts to display the item at the index provided
 
 # TESTS FOR DISPLAYITEM
 
