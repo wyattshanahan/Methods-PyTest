@@ -78,17 +78,32 @@ def test_palin_6():
 ## has input to receive two numbers
 ## divides the two, then outputs the result
 
+def geninputs():
+    inputs = ["6","3"]
+
+    for item in inputs:
+        yield item
+
+GEN = geninputs()
+
+def test_divide(monkeypatch):
+    monkeypatch.setattr(‘builtins.input’, lambda _: next(GEN))
+
+    assert divide() == 2.0
+
 ## returns the squareroot of a particular number
 
+# should return value error, because the value can't be less than 0
 def test_sq_negative():
     with pytest.raises(ValueError):
         sq(-1)
+# makes sure the function return the correct value
 def test_sq():
     assert sq(4) == 2
-def test_sq_is_float():
-    assert sq(4) == 2
+# tests if a string can be passed in
 def test_sq_string():
     assert sq("4") == 2
+# tests if the string can be converted to a float and return the correct value
 def test_sq_str2():
     assert sq(float("4")) == 2
 ## grabs user's name
@@ -101,11 +116,11 @@ def test_greetUser(capsys):
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "Hello!\nWelcome to the program John Robert Doe\nGlad to have you!\n"
 # this test should fail
-def test_greetUser_failure():
+def test_greetUser_failure(capsys):
     greetUser("John", "Robert", "Doe")
 
-    #captured_stdout, captured_stderr = capsys.readouterr()
-    #assert captured_stdout == "this test should fail"
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "this test should fail"
 
 ## takes in a Python list
 ## attempts to display the item at the index provided
@@ -121,5 +136,5 @@ def test_displayItem(capsys):
 def test_displayItem_indexErr():
     assert displayItem([0, 1, 2], 5) == "index error"
 # should raise a type error, because the index variable must be an integer
-def test_displayItem_PLACEHOLDER():
+def test_displayItem_typeErr():
     assert displayItem([0, 1, 2, 3], "five") == "type error"
