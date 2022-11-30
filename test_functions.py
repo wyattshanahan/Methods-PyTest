@@ -1,20 +1,9 @@
-import pytest
-import math
 from functions import *
-#this py file contains the pytest functions and the uncorrected original functions
+# this py file contains the pytest functions
 
+# TESTS FOR OPENFILE
 
-## opens a file in read mode
-## filename received as a parameter
-def openFile(filename):
-    infile = open(filename, "r")
-
-    print("File opened.")
-
-## takes two numbers and returns
-## the result of a division
-## takes in two points
-## finds the distance between the points
+# TESTS FOR NUMBERS
 
 # tests for a correct division by numbers
 def test_numbers():
@@ -30,7 +19,11 @@ def test_numbers_zero():
 
 # tests the function using an integer and a float, should return an integer
 def test_numbers_1flt():
-    assert numbers(5,5.0) == 1.0
+    assert numbers(5,5.0) == 1
+
+# tests i the function using an integer and a numeric string
+def test_numbers_str():
+    assert numbers(5,"5") == 1
 
 #testing dist, should pass and return a long decimal using only integers
 def test_dist_1():
@@ -40,7 +33,7 @@ def test_dist_2():
     assert dist(4,2,4,2) == 0.0
 #testing dist, should return a float with a decimal of zero
 def test_dist_3():
-    assert (dist(1, 4, 2, 4)) == 1.0
+    assert (dist(1, 4, 2, 4)) == 1
 #testing dist to ensure it can handle a mix of floats and integers
 def test_dist_4():
     assert (dist(1,2.0,3,4.0)) == 2.8284271247461903
@@ -81,8 +74,9 @@ def test_palin_6():
 ## returns the squareroot of a particular number
 
 def test_sq_negative():
-    with pytest.raises(ValueError):
-        sq(-1)
+    assert sq(-1) == None
+    #with pytest.raises(ValueError):
+     #   sq(-1)
 def test_sq():
     assert sq(4) == 2
 def test_sq_is_float():
@@ -101,18 +95,17 @@ def test_greetUser(capsys):
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "Hello!\nWelcome to the program John Robert Doe\nGlad to have you!\n"
 # this test should fail
-def test_greetUser_failure():
+def test_greetUser_failure(capsys):
     greetUser("John", "Robert", "Doe")
-
-    #captured_stdout, captured_stderr = capsys.readouterr()
-    #assert captured_stdout == "this test should fail"
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "this test should fail"
 
 ## takes in a Python list
 ## attempts to display the item at the index provided
 
 # TESTS FOR DISPLAYITEM
 
-#tests for correct output
+# tests for correct output
 def test_displayItem(capsys):
     displayItem([0, 1, 2, 3], 3)
     captured_stdout, captured_stderr = capsys.readouterr()
