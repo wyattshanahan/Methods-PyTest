@@ -13,9 +13,10 @@ def numbers(num1, num2):
     try:
         num1 = int(num1)
         num2 = int(num2)
-    except:
-        print("Cannot divide by zero")
-    return num1 / num2
+        return num1/num2
+    except ZeroDivisionError:
+        return None
+    #return num1 / num2
 
 ## takes in two points
 ## finds the distance between the points
