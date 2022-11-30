@@ -134,6 +134,7 @@ def test_sq_string():
     assert sq("4") == 2
 
 # TESTS FOR GREETUSER
+# tests for correct output
 def test_greetUser(capsys):
     greetUser("John", "Robert", "Doe")
     captured_stdout, captured_stderr = capsys.readouterr()
@@ -143,6 +144,11 @@ def test_greetUser_failure(capsys):
     greetUser("John", "Robert", "Doe")
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "this test should fail"
+# this test should fail because last name is not all letters
+def test_greetUser_isLetters(capsys):
+    greetUser("John", "Robert", "12345")
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "Hello!\nWelcome to the program John Robert 12345\nGlad to have you!\n"
 
 
 # TESTS FOR DISPLAYITEM

@@ -105,9 +105,12 @@ def sq(num):
 ## greets them by their entire name
 ## names should be strings
 def greetUser(first, middle, last):
-    print("Hello!")
-    print("Welcome to the program", first, middle, last)
-    print("Glad to have you!")
+    if first.isalpha() and middle.isalpha() and last.isalpha():
+        print("Hello!")
+        print("Welcome to the program", first, middle, last)
+        print("Glad to have you!")
+    else:
+        print("Your name should be all letters.")
 
 ## takes in a Python list
 ## attempts to display the item at the index provided
@@ -117,4 +120,4 @@ def displayItem(numbers, index):
     except IndexError:
         print("The index argument is out of reach of the list.")
     except TypeError:
-        print("The index argument must be an integer.") 
+        print("The index argument must be an integer.")
