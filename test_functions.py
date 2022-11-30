@@ -82,17 +82,33 @@ def test_palin_6():
     assert (isPalindrome(616.616)) == True
 
 # TESTS FOR DIVIDE
-#def test_divide_inputTest(monkeypatch):
-    #monkeypatch.setattr("builtins.input", lambda_:"8")
 
 def geninputs1():
     inputs = ["6","3"]
     for item in inputs:
         yield item
-GEN = geninputs1()
-def test_divide(monkeypatch):
-    monkeypatch.setattr('builtins.input', lambda _: next(GEN))
-    assert divide() == 2.0
+GEN1 = geninputs1()
+def test_divide_1(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN1))
+    assert divide() == "Your numbers divided is: 2.0\n"
+
+def geninputs2():
+    inputs = ["6","3"]
+    for item in inputs:
+        yield item
+GEN2 = geninputs1()
+def test_divide_2(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN2))
+    assert divide() == "Your numbers divided is: 2.0\n"
+
+def geninputs3():
+    inputs = ["6","3"]
+    for item in inputs:
+        yield item
+GEN3 = geninputs3()
+def test_divide_3(monkeypatch):
+    monkeypatch.setattr('builtins.input', lambda _: next(GEN3))
+    assert divide() == "Your numbers divided is: 2.0\n"
 
 # TESTS FOR SQ
 

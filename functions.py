@@ -69,8 +69,9 @@ def divide():
 
     div = num1 / num2
 
-    return div
-    # print("Your numbers divided is:", div)
+    output = "Your numbers divided is: " + str(div) + "\n"
+    print (output)
+    return output
 
 ## returns the squareroot of a particular number
 def sq(num):
