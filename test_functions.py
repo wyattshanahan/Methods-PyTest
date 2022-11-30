@@ -139,12 +139,12 @@ def test_greetUser(capsys):
     greetUser("John", "Robert", "Doe")
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "Hello!\nWelcome to the program John Robert Doe\nGlad to have you!\n"
-# this test should fail
+# this test should fail because last name is other characters
 def test_greetUser_failure(capsys):
-    greetUser("John", "Robert", "Doe")
+    greetUser("John", "Robert", "&%$#@")
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "this test should fail"
-# this test should fail because last name is not all letters
+# this test should fail because last name is all numbers
 def test_greetUser_isLetters(capsys):
     greetUser("John", "Robert", "12345")
     captured_stdout, captured_stderr = capsys.readouterr()
