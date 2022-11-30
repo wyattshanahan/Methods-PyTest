@@ -8,11 +8,11 @@ def test_openFile(capsys):
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "File opened.\n"
 # tests for nonexistent file (should return an error and fail the test)
-def test_openFile_failure(capsys):
+def test_openFile_nonexistentFile(capsys):
     openFile("nonexistent_file.txt")
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "This test should fail because the file doesn't exist.\n"
-# tests for invalid file name
+# tests for invalid file name (should return an error and fail the test)
 def test_openFile_notString(capsys):
     openFile(12345)
     captured_stdout, captured_stderr = capsys.readouterr()

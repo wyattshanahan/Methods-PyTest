@@ -10,6 +10,8 @@ def openFile(filename):
         print("That file doesn't exist.")
     except OSError:
         print("That's not a valid file name.")
+    finally:
+        print("An unknown error occurred.")
 
 ## takes two numbers and returns
 ## the result of a division
