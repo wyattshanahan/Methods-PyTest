@@ -82,7 +82,7 @@ def test_palin_6():
     assert (isPalindrome(616.616)) == True
 
 # TESTS FOR DIVIDE
-"""
+
 def geninputs():
     inputs = ["6","3"]
 
@@ -95,7 +95,7 @@ def test_divide(monkeypatch):
     monkeypatch.setattr(‘builtins.input’, lambda _: next(GEN))
 
     assert divide() == 2.0
-"""
+
 # TESTS FOR SQ
 
 # testing for negative values, should fail
@@ -137,7 +137,7 @@ def test_displayItem(capsys):
     assert captured_stdout == "Your item at 3 index is 3\n"
 # should raise an index error, because tried to get an index that is out of reach of the list
 def test_displayItem_indexErr():
-    assert displayItem([0, 1, 2], 5) == "index error"
+    assert displayItem([0, 1, 2], 5) == 2
 # should raise a type error, because the index variable must be an integer
-def test_displayItem_PLACEHOLDER():
-    assert displayItem([0, 1, 2, 3], "five") == "type error"
+def test_displayItem_typeErr():
+    assert displayItem([0, 1, 2, 3], "three") == 3
