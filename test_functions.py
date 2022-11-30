@@ -2,7 +2,21 @@ from functions import *
 # this py file contains the pytest functions
 
 # TESTS FOR OPENFILE
-
+# tests for successful opening of file
+def test_openFile(capsys):
+    openFile("testing.txt")
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "File opened.\n"
+# tests for nonexistent file (should return an error and fail the test)
+def test_openFile_failure(capsys):
+    openFile("nonexistent_file.txt")
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "This test should fail because the file doesn't exist.\n"
+# tests for invalid file name
+def test_openFile_notString(capsys):
+    openFile(12345)
+    captured_stdout, captured_stderr = capsys.readouterr()
+    assert captured_stdout == "This test should fail because a string wasn't passed in.\n"
 # TESTS FOR NUMBERS
 
 # tests for a correct division by numbers
@@ -68,7 +82,20 @@ def test_palin_6():
     assert (isPalindrome(616.616)) == True
 
 # TESTS FOR DIVIDE
+"""
+def geninputs():
+    inputs = ["6","3"]
 
+    for item in inputs:
+        yield item
+
+GEN = geninputs()
+
+def test_divide(monkeypatch):
+    monkeypatch.setattr(‘builtins.input’, lambda _: next(GEN))
+
+    assert divide() == 2.0
+"""
 # TESTS FOR SQ
 
 # testing for negative values, should fail
