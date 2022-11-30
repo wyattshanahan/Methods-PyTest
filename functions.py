@@ -11,11 +11,17 @@ def openFile(filename):
 ## the result of a division
 def numbers(num1, num2):
     try:
-        num1 = int(num1)
-        num2 = int(num2)
         return num1/num2
     except ZeroDivisionError:
+        print("Unable to divide by zero")
         return None
+    except TypeError:
+        try:
+            num1 = float(num1)
+            num2 = float(num2)
+            return num1 / num2
+        except:
+            print("You entered an invalid data type.")
     #return num1 / num2
 
 ## takes in two points
@@ -65,14 +71,12 @@ def sq(num):
 
     try:
         x = math.sqrt(num)
-        print(x)
         return math.sqrt(num)
     except ValueError:
         print("Cannot have a square root of a negative number")
     except TypeError:
         num = float(num)
         x = math.sqrt(num)
-        print(x)
         return math.sqrt(num)
 
 ## grabs user's name

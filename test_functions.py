@@ -1,20 +1,9 @@
-import pytest
-import math
 from functions import *
-#this py file contains the pytest functions and the uncorrected original functions
+# this py file contains the pytest functions
 
+# TESTS FOR OPENFILE
 
-## opens a file in read mode
-## filename received as a parameter
-def openFile(filename):
-    infile = open(filename, "r")
-
-    print("File opened.")
-
-## takes two numbers and returns
-## the result of a division
-## takes in two points
-## finds the distance between the points
+# TESTS FOR NUMBERS
 
 # tests for a correct division by numbers
 def test_numbers():
@@ -30,8 +19,13 @@ def test_numbers_zero():
 
 # tests the function using an integer and a float, should return an integer
 def test_numbers_1flt():
-    assert numbers(5,5.0) == 1.0
+    assert numbers(5,5.0) == 1
 
+# tests i the function using an integer and a numeric string
+def test_numbers_str():
+    assert numbers(5,"5") == 1
+
+# TESTS FOR DIST
 #testing dist, should pass and return a long decimal using only integers
 def test_dist_1():
     assert dist(1,2,3,4) == 2.8284271247461903
@@ -40,7 +34,7 @@ def test_dist_2():
     assert dist(4,2,4,2) == 0.0
 #testing dist, should return a float with a decimal of zero
 def test_dist_3():
-    assert (dist(1, 4, 2, 4)) == 1.0
+    assert (dist(1, 4, 2, 4)) == 1
 #testing dist to ensure it can handle a mix of floats and integers
 def test_dist_4():
     assert (dist(1,2.0,3,4.0)) == 2.8284271247461903
@@ -53,10 +47,8 @@ def test_dist_6():
 #testing dist with an input including letters stored in a string
 def test_dist_7():
     assert (dist("one",2,3,4)) == "Invalid input."
-## takes in a string -- reverses it
-## then compares the two
 
-#tests a palindrome in all lowercase characters
+# TESTS FOR ISPALINDROME
 def test_palin_1():
     assert (isPalindrome("racecar")) == True
 #tests a palindrome with one capital letter, should fail without converting letters to the same case
@@ -75,40 +67,25 @@ def test_palin_5():
 def test_palin_6():
     assert (isPalindrome(616.616)) == True
 
-## has input to receive two numbers
-## divides the two, then outputs the result
+# TESTS FOR DIVIDE
 
-def geninputs():
-    inputs = ["6","3"]
+# TESTS FOR SQ
 
-    for item in inputs:
-        yield item
-
-GEN = geninputs()
-
-def test_divide(monkeypatch):
-    monkeypatch.setattr(‘builtins.input’, lambda _: next(GEN))
-
-    assert divide() == 2.0
-
-## returns the squareroot of a particular number
-
-# should return value error, because the value can't be less than 0
+# testing for negative values, should fail
 def test_sq_negative():
-    with pytest.raises(ValueError):
-        sq(-1)
-# makes sure the function return the correct value
+    assert sq(-1) == None
+
+#testing for integer values, should pass
 def test_sq():
     assert sq(4) == 2
-# tests if a string can be passed in
+
+#testing for float values, should pass
+def test_sq_is_float():
+    assert sq(4.0) == 2.0
+
+#testing for string values, should pass
 def test_sq_string():
     assert sq("4") == 2
-# tests if the string can be converted to a float and return the correct value
-def test_sq_str2():
-    assert sq(float("4")) == 2
-## grabs user's name
-## greets them by their entire name
-## names should be strings
 
 # TESTS FOR GREETUSER
 def test_greetUser(capsys):
@@ -118,7 +95,6 @@ def test_greetUser(capsys):
 # this test should fail
 def test_greetUser_failure(capsys):
     greetUser("John", "Robert", "Doe")
-
     captured_stdout, captured_stderr = capsys.readouterr()
     assert captured_stdout == "this test should fail"
 
@@ -127,7 +103,7 @@ def test_greetUser_failure(capsys):
 
 # TESTS FOR DISPLAYITEM
 
-#tests for correct output
+# tests for correct output
 def test_displayItem(capsys):
     displayItem([0, 1, 2, 3], 3)
     captured_stdout, captured_stderr = capsys.readouterr()
@@ -136,5 +112,5 @@ def test_displayItem(capsys):
 def test_displayItem_indexErr():
     assert displayItem([0, 1, 2], 5) == "index error"
 # should raise a type error, because the index variable must be an integer
-def test_displayItem_typeErr():
+def test_displayItem_PLACEHOLDER():
     assert displayItem([0, 1, 2, 3], "five") == "type error"
